@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int n, m;
+char a[1000];
+bool check[1000] = { 0 };
+void init() {
+	for (int i = 1; i <= m; i++) {
+		cout << a[i];
+	}
+	cout << endl;
+}
+void thu(int k) {
+	for (int i = 97; i <= 97 + n - 1; i++) {
+		if (!check[i]) {
+			a[k] = char(i);
+			check[i] = 1;
+			if (k == m)
+			{
+				init();
+			}
+			else {
+				thu(k + 1);
+			}
+			check[i] = 0;
+ 		}
+	}
+}
+int main() {
+	cin >> n >> m;
+	thu(1);
+}
