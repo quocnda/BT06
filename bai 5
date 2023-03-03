@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int x[100];
+int t[100];//tong cac so <=n
+int n;
+void xuat(int k)
+{
+	for (int i = 1; i < k; i++) {
+		cout << x[i] << "+";
+	}
+	cout<<x[k]<<endl;
+}
+void thu(int i) {
+
+
+	for (int j = x[i - 1]; j <= (n - t[i - 1]) / 2; j++) {
+		x[i] = j;
+		t[i] = t[i - 1] + j;
+		thu(i + 1);
+
+	}
+	x[i] = n - t[i - 1];
+		xuat(i);
+
+
+}
+int main() {
+	x[0] = 1;
+	t[0] = 0;
+
+	cin >> n;
+	thu(1);
+}
